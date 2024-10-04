@@ -1,0 +1,78 @@
+
+schema: Employee
+
+field(name,position,office,age,start_date,salary)
+
+
+from django.db import models
+
+class Employee(models.Model:)
+      
+    name=models.CharField(max_length=200)
+    positiion=models.CharField(max_length=200)
+    office=models.CharField(max_length=200)
+    age=models.PositiveIntegerField()
+    start_date=models.DateField()
+    salary=Models.PositiveIntegerField()
+
+
+
+1. query for adding a new record
+
+Employee.object.create( id=1
+                        name="",
+                        position="",
+                        office="",
+                        age="",
+
+
+
+)
+
+2.query from updating an employee record
+
+   Employee.objects.filter(id=1).update(salary=60000,office="kochi")
+
+3.query for filtering employee with age and salary
+
+   qs=Employee.objects.filter(age=40,salary)
+
+4.query for deleting employee record
+
+   Employee.oybjects.filter(id=1).delete()
+
+5.employee with salary>25000
+
+   qs=Employee.objects.filter(salary__gt=25000)
+
+6.filtering employee with office tokyo
+
+    qs=Employee.objects.filter(office="Tokyo")
+
+7.query for fetching all records
+  
+    qs=Employee.objects.all()
+
+8.employees with salary in range of 25k to 50k
+
+    qs=Empoyee.objects.filter(salary__gte=25k,salary__lte=50k)
+
+9.sort employee with respect to salary order by asc
+
+    qs=Employee.objects.all().order_by("salary")  #asc
+
+    qs=Employee.objects.all().order_by("-salary") #desc
+
+10.employee with highest salary
+
+    aggregateFunction
+
+    count(),Max(),Min(),Sum(),Avg()
+
+    Max_sal=Employee.objects.all().values("salary").aggreagate(salary=Max('salary'))
+
+    min_salary=Employee.objects.all().values("salary").aggreagate(salary=Max('salary'))
+
+11.group employees with respect to office
+
+    office_summary=Employee.objects.all().values('office').annoatete(cnt=Count('office'))
